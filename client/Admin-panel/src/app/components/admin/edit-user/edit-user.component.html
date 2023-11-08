@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-center flex-column align-items-center" style="height: 100vh;">
+    <h1 style="text-align: center;">Edit User</h1>
+    <div class="" style="width: 70%;">
+        <form #editUserForm="ngForm" (ngSubmit)="edit(userId)">
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Full name:</label>
+                    <input type="text" [value]="userData?.full_name" [(ngModel)]="editForm.full_name" name="full_name"
+                        required minlength="5" class="form-control">
+                    <p *ngIf="fullNameError" class="text-danger">{{fullNameError}}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Username:</label>
+                    <input type="text" [value]="userData?.username" [(ngModel)]="editForm.username" name="username"
+                        required minlength="5" class="form-control">
+                    <p class="text-danger" *ngIf="usernameError">{{usernameError}}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Email:</label>
+                    <input type="email" [value]="userData?.email" class="form-control" required
+                        [(ngModel)]="editForm.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <p *ngIf="emailError" class="text-danger">{{emailError}}</p>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Phone:</label>
+                    <input type="tel" [value]="userData?.phone" class="form-control" required minlength="10"
+                        [(ngModel)]="editForm.phone" name="phone">
+                    <p *ngIf="phoneError" class="text-danger">{{phoneError}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" [disabled]="editUserForm.invalid" class="btn btn-primary">Edit</button>
+            </div>
+        </form>
+    </div>
+</div>

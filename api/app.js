@@ -2,7 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
+// cors
+const corsOptions = {
+  origin: process.env.URL,
+  methods: "GET, POST, PUT ,DELETE ,PATCH, OPTIONS",
+  allowedHeaders: "Content-Type, Authorization",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // routes representation

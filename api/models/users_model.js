@@ -4,7 +4,8 @@ const users = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
 
     full_name: {
@@ -14,7 +15,8 @@ const users = new mongoose.Schema(
 
     email: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
 
     password: {
@@ -24,11 +26,6 @@ const users = new mongoose.Schema(
 
     phone: {
       type: String
-    },
-
-    is_blocked: {
-      type: Boolean,
-      default: false
     },
 
     // is logged in or not

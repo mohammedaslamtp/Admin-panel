@@ -1,0 +1,42 @@
+<!-- alert msg -->
+<section class="vh-100 d-flex justify-content-center align-items-center flex-column p-3">
+    <h1 class="text-secondary">Admin</h1>
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form #login="ngForm" (ngSubmit)="onSubmit()">
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" class="form-control form-control-lg" placeholder="Enter email or username"
+                            name="username" [(ngModel)]="formData.username" required minlength="5" />
+                        <label *ngIf="usernameError" class="form-label mt-1 text-danger">{{ usernameError }}</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <input type="password" name="password" class="form-control form-control-lg"
+                            placeholder="Enter password" [(ngModel)]="formData.password" required minlength="8" />
+
+                        <label *ngIf="passwordError" class="form-label mt-1 text-danger">{{ passwordError }}</label>
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit"
+                            class="btn btn-primary btn-lg d-flex justify-content-between align-items-center"
+                            style="padding-left: 2rem; padding-right: 2rem;" [disabled]="login.invalid">
+                            Login <p *ngIf="isLoading" class="p-0 m-0">&nbsp;&nbsp;&nbsp;</p>
+                            <div *ngIf="isLoading" class="mt-1 spinner-border spinner-border-sm" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
